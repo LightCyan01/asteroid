@@ -11,6 +11,8 @@ def main():
     
     screen = pygame.display.set_mode(size=(SCREEN_WIDTH, SCREEN_HEIGHT))
     running = True
+    clock = pygame.time.Clock()
+    dt = 0
     
     while running:
         for event in pygame.event.get():
@@ -19,7 +21,10 @@ def main():
             
         pygame.Surface.fill(screen, "black")
         
+        # updates the full display Surface to the screen
         pygame.display.flip()
+        
+        dt = clock.tick(60) / 1000
         
         
 
