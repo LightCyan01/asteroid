@@ -1,5 +1,6 @@
 import pygame
 from constants import *
+from player import Player
 
 print("Starting Asteroids!")
 print(f"Screen width: {SCREEN_WIDTH}")
@@ -12,6 +13,7 @@ def main():
     screen = pygame.display.set_mode(size=(SCREEN_WIDTH, SCREEN_HEIGHT))
     running = True
     clock = pygame.time.Clock()
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     dt = 0
     
     while running:
@@ -21,11 +23,16 @@ def main():
             
         pygame.Surface.fill(screen, "black")
         
+        player.update(dt)
+        player.draw(screen)
+        
         # updates the full display Surface to the screen
         pygame.display.flip()
         
+        # limit frames to 60 fps
         dt = clock.tick(60) / 1000
-        
+    
+    
         
 
 if __name__ == "__main__":
